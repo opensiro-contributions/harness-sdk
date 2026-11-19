@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "20261119T131207Z--strands-budget-roadmap-bootstrap",
+  "recorded_at": "2026-11-19T13:12:07.132Z",
+  "actor": "OpenSiro AI assistant (user-requested continuation of upstream roadmap)",
+  "kind": "RESEARCH",
+  "decision": "NO_GO",
+  "evidence_urls": [
+    "https://github.com/opensiro/vsm-harness-index/blob/34e11ec4dd52e1ba3ee0111d8bca73f13918f54f/assessments/st/strands-agents.md",
+    "https://github.com/strands-agents/harness-sdk/issues/6289",
+    "https://github.com/strands-agents/harness-sdk/pull/6279",
+    "https://github.com/strands-agents/harness-sdk/issues/5341"
+  ],
+  "next_action": "No speculative S3 constructor; initial metadata PAUSE/DORMANT. Future effectful work needs attributable owner grant; public fork Issues disabled and any publication requires exact approval."
+}
