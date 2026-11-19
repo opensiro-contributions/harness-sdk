@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "20261119T194704Z--strands-v18-sixfunction-rerun",
+  "recorded_at": "2026-11-19T19:47:04Z",
+  "actor": "OpenSiro AI assistant (user-directed Upstream #58 independent v0.18 rerun)",
+  "kind": "RESEARCH",
+  "decision": "NO_GO",
+  "evidence_urls": [
+    "https://github.com/strands-agents/harness-sdk/commit/794d37c6e3f00e1d4192f3c81672d3da79780d88",
+    "https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/st/strands-agents.md",
+    "https://github.com/strands-agents/harness-sdk/issues/6289",
+    "https://github.com/strands-agents/harness-sdk/issues/5631",
+    "https://github.com/strands-agents/harness-sdk/pull/6286",
+    "https://github.com/opensiro/upstream/issues/58"
+  ],
+  "next_action": "Independent six-function source-only NO_QUALIFIED_C_TARGET; maintain old historical case and owner ACTIVE/ALLOW. No native tests, costs, original/fork publication or new Index grade claimed."
+}
