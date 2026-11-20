@@ -1,59 +1,90 @@
-# Strands Agents — independently composed S3* artifact audit (OpenSiro Human Issue)
+# Strands Agents — S3* independent artifact audit (Opensiro roadmap)
 
-**PLAN_ONLY · GO / NEEDS_EVIDENCE · DRAFT — NOT PUBLISHED.** This is the existing internal fork-local case updated for the 2026-11-20 Wave 4 source-first rerun. It is not a GitHub public Issue.
+**PLAN_ONLY · proposal-stage GO · research NEEDS_EVIDENCE · DRAFT — NOT PUBLISHED**
 
-**One-sentence proposal:** Allow a Strands application to install a separate autonomous evidence auditor on `Swarm` that checks claimed task completion against actual artifacts and returns a versioned finding to the authorized next-step controller.
+**One-sentence proposal:** Add an opt-in, source-native Strands Swarm complementary audit plugin that lets a separately authorized autonomous reviewer inspect original task artifacts and pass a challenge finding into the application's lawful next-step control.
 
-**Canonical decision receipt:** [roadmap.md](roadmap.md) — single source for source pins, historical assessment vector, priorities, proposal decision and validation.
-**Technical companion:** [constructor-sufficiency.md](constructor-sufficiency.md) — source-native hooks, ownership and proposed tests.
+**Canonical decision receipt:** [roadmap.md](roadmap.md), the single structured authority for historical Index vector, six function dispositions, chosen transition, P0/P1/P2 and publication state.
+**Technical companion:** [constructor-sufficiency.md](constructor-sufficiency.md), for exact Swarm hooks, distinct audit decision rights and future acceptance.
+**Working fork:** `opensiro-contributions/harness-sdk@opensiro/meta`, verified parent `strands-agents/harness-sdk` and `ACTIVE / ALLOW` metadata rights.
+**Case:** `.opensiro/issues/strands-independent-sixfunction-20261119/`; same historical case revised after independent new first-pass, with prior result retained in Git history.
+
+## 1. Why Opensiro and central accepted VSM assessment
+
+Opensiro tests whether source-specific VSM functions can be composed on top of a real AI harness. Its proposed construction feasibility is not a feature request, quality certification, cost-reduction measurement or maintainer approval.
+
+### Central starting point — accepted Index, not the target
+
+**ACCEPTED HISTORICAL INDEX — not current grades, not a quality score:** `S1=A · S2=C · S3=— · S3*=— · S4=— · S5=—`.
+
+[Included Strands assessment](https://github.com/opensiro/vsm-harness-index/blob/5dbb51b2ddad0f29a84e10b4b5009c8989159165/assessments/st/strands-agents.md) at Index `5dbb51b2ddad0f29a84e10b4b5009c8989159165` (assessment blob `60b16ac6fdbe828d873706786a79e44053ec7446`, `review_ref=08ed4cfd3eb42ae9f668595e675d5f196eee7e44`, `reviewed_at=2026-09-15`, Profile 0.2.1 / Skills methodology 0.3.1); matching catalog row 61 and resolved historical original ref. Current original [`287896945d2190ebf90adc9e67c0456239681843`](https://github.com/strands-agents/harness-sdk/commit/287896945d2190ebf90adc9e67c0456239681843) is a separately pinned 2026-11-20 observation. The states are **ownership categories, not quality ranks**: `A` autonomous ownership, `C` developer-composable autonomous function, `—` no established path at the *historically reviewed boundary*; no `—` forces construction.
+
+**Repository-wide audit:** Inspected current monorepo README/AGENTS, `strands-py`/`strands-ts`, `harness-py`/`harness-ts`, Swarm/Graph, hooks, agent goal-loop/interventions, model routing, snapshots, delegation/background tasks, supporting tests/CI, docs and contributor policy, plus related original PR heads and issue text. System in focus is the developer-installed agent + optional Swarm/Graph; team governance, site/Evals examples and dev CI are adjacent, not silently credited as in-runtime S3*/S5.
+
+| Function / plain-language role | Historical state | Current source-backed owner/closure | Candidate / uncertainty and priority |
+| --- | --- | --- | --- |
+| **S1 · Operations** | A | [Agent](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/agent/agent.py) autonomously chooses model/tool work and receives results | NO_TARGET; existing operations |
+| **S2 · Coordination** | C | [Swarm](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/multiagent/swarm.py) configurable repetitive-handoff regulation | NO_TARGET; existing composable anti-oscillation |
+| **S3 · Current management** | — | App-defined limits and cancellation constrain activity; whole-system budget/priority authority not established | DEFER; heavier new rights and scheduling |
+| **S3* · Complementary audit** | — | [GoalLoop](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/vended_plugins/goal/plugin.py) and traces follow ordinary work, not independently sourced raw-artifact review | **P0:** optional separate autonomous raw-evidence verifier with returned authorized later-operation hold |
+| **S4 · Future intelligence** | — | Configured routing/provider swaps do not establish prospective environment model with S3 feedback | DEFER; no justified external adaptation scenario |
+| **S5 · Identity and policy** | — | App developer/parent owns legitimate policy; [harness interventions](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/harness-py/src/strands_harness/interventions.py) enforce configured boundaries | NO_TARGET; no unauthorized local S5 |
+
+**Priority rationale:** S3* can reuse shipped Swarm node history/result and lifecycle callbacks with a narrow read-only complementary actor, while S3 demands larger cross-child resource authority; S4 lacks a supported outside/future experiment; S5 belongs to the parent and S1/S2 have accepted positive witnesses. No invented six-function quota.
+
+**Deliberate exclusions / methodology challenge:** Parent-held S5 is lawful, not a runtime deficiency; a lack of current S4 evidence is not proof the omission was deliberately intended. A current GoalLoop reviewer is not automatically independent S3*. Falsify the S3* plan if only the worker's own report can be accessed or no independent finding changes later work. Maintainer interest: NOT_STATED.
+
+## 2. Selected construction hypothesis and operator outcome
+
 **Target transition:** S3*=— -> S3*=C
+**Function-specific disturbance:** HYPOTHETICAL false completion of an artifact-producing Swarm task: worker says it wrote the requested file, but the actual file/tool return shows absence or wrong content.
+**Proposed C capability (P0):** A developer may attach an opt-in Python [MultiAgentPlugin](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/plugins/multiagent_plugin.py) to a regular Swarm, configure an autonomous *separate read-only reviewer* with original artifact/replay access, obtain a versioned `PASS / CHALLENGE / INCONCLUSIVE` finding and let the authorized application controller hold/recheck the *next affected* node via [BeforeNodeCallEvent](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/hooks/events.py), with actual outcome returned.
+**Best native operator alternative:** Use existing [GoalLoop](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/vended_plugins/goal/plugin.py), tracing/hooks and application/human review; these can be sufficient for a chosen application but do not themselves prove independent raw-evidence ownership at the installed Swarm boundary.
+**Expected user benefit:** HYPOTHETICAL ability to detect a wrong artifact against its original data and prevent blind continuation; benefit, incidence and cost are NOT_MEASURED, with no claim of maintainer demand.
+**Architectural sufficiency argument:** Shipped Swarm results and hooks provide observation and *subsequent-node* effect seams, but only a distinct authorized evidence provider and autonomous reader can challenge routine claims; a versioned audit and lawful controller feedback complete the proposed S3* path without granting S5 rights. It is a proposed composable C, not shipped C or automatic new Index grade.
+
+## 3. Existing native work versus missing construction
+
+**Track A — native coverage:** [Swarm result/history](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/multiagent/swarm.py), [plugin hooks](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/plugins/multiagent_plugin.py), [snapshot](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/multiagent/_snapshot.py) and in-path GoalLoop SHIPPED. [PR #1656](https://github.com/strands-agents/harness-sdk/pull/1656) OPEN at head `506853a60cf1688bfc06a7a868b8faed49cb356a` adds optional evaluation OTel event transport, not audit owner. [PR #6204](https://github.com/strands-agents/harness-sdk/pull/6204) OPEN at head `2a16c48fe7311c70415ffa0c7dc19b6079649414` adds product E2E tests, not installed audit feedback. [Issue #5934](https://github.com/strands-agents/harness-sdk/issues/5934) OPEN asks for deterministic pre-tool argument bounds; [PR #6046](https://github.com/strands-agents/harness-sdk/pull/6046) MERGED adds optional background-task cancellation, unrelated to S3* review ownership.
+**Track B — independent on-top C construction:** App configures independent raw-evidence reader + separate autonomous audit actor, sampled stable task IDs and evidence revisions, recorded finding and an application-authorized hold/recheck/feedback path on the following node. No generic mandatory supervisor or side-effect authority.
+
+| C-sufficiency requirement | Already present (A) | Missing (B) |
+| --- | --- | --- |
+| Audited operational claim and independent contrary access | Swarm `NodeResult`, task history, tracing | Read actual artifact/replay bytes, separate from worker narrative; autonomous independent auditor |
+| Legitimate finding and later returned correction | `AfterMultiAgentInvocationEvent`, `BeforeNodeCallEvent.cancel_node`, snapshots | Attributed verdict/revision + application-owned next-task hold or recheck + observed next-node result |
+
+**Distinctness and falsifier:** A GoalLoop validator that reads only the worker transcript is not independently sourced S3*. If current first-party functionality already supplies independent auditor with raw evidence *and* authorized returned next-step feedback, this proposal is duplicate. If no separate evidence or controller effect is possible, the proposed C is insufficient.
+
+## 4. Priorities and minimum sufficient result
+
+- **P0:** Optional first-party Python Swarm S3* raw artifact/replay audit and authorized next-step return, only at developer-declared boundary.
+- **P1:** Prove artifact source/revision provenance, independent auditor role and app authority, hook order, snapshots/replay safety, and native tests before considering TS parity.
+- **P2:** NONE; no second VSM function or mandatory broad controller.
+
+**Proposed C-sufficiency verdict:** PROPOSED_C_SUFFICIENT at architecture/design level, independent acceptance NOT_RUN, not production proof.
+
+## 5. Proposed acceptance and stop gates
+
+**Future positive test:** One Swarm worker asserts it generated a file, but independent reader sees missing/wrong file; auditor issues CHALLENGE, lawful next node is held or rechecked, and the actual effect is returned to controller. Compare same input to ordinary in-path GoalLoop baseline.
+**Future negative test:** No installed auditor, revoked/missing raw-evidence permission, stale task revision, unexpected failure or incorrect worker claim; do not silently treat absent independent evidence as a pass. A valid artifact should avoid false holds.
+**Proposed falsifier:** Independent source access, separate judgement, lawful next-step effect or return is absent; or equivalent shipped first-party C already exists.
+**Validation state:** NOT_RUN; no native test or economic validation, no guessed pass counts.
+
+## 6. Independent paths
+
+**Original-native contribution:** Proposed later as opt-in Strands Swarm plugin only after source-native tests and maintainer process; no current original code/Issue/PR.
+**Profile / Skills:** No demonstrated amendment; S3* reading/return and parent authority already follow [Profile](https://github.com/opensiro/vsm-harness-profile/blob/main/PROFILE.md).
+**Domain fork:** NONE proposed; an independent permitted implementation would require fresh owner-rights review.
+
+## 7. Cost hypothesis
+
+Compare normal Strands GoalLoop/trace/human verification with extra autonomous evidence audit against identical false/real artifact workloads; count detection, false holds, integration, review, maintenance and operational spend. **Cost status: NOT_MEASURED**; no empirical ROI.
+
+## 8. Decision / handoff
+
 **Proposal-stage decision:** GO
 **Research disposition:** NEEDS_EVIDENCE
-
-## 1. Why OpenSiro and historical baseline
-
-OpenSiro tests whether a composable VSM function can be architecturally constructed for an original harness. This does not imply defect, project need, reduced engineering cost, maintainer agreement or changed grade.
-
-**ACCEPTED HISTORICAL Index (not current HEAD):** [Strands assessment](https://github.com/opensiro/vsm-harness-index/blob/5dbb51b2ddad0f29a84e10b4b5009c8989159165/assessments/st/strands-agents.md) at Index `5dbb51b2ddad0f29a84e10b4b5009c8989159165`, assessment blob `60b16ac6fdbe828d873706786a79e44053ec7446`, original review `08ed4cfd3eb42ae9f668595e675d5f196eee7e44`, 2026-09-15, Profile 0.2.1 / methodology 0.3.1. [Current original 287896945d2190ebf90adc9e67c0456239681843](https://github.com/strands-agents/harness-sdk/commit/287896945d2190ebf90adc9e67c0456239681843) separately pinned (2026-11-20). The accepted original/catalog identity matches. Historical ownership categories are not quality ranks.
-
-**Six functions — one historical/current/priority table:**
-
-| Function · plain-language role | Historical Index | Pinned current source / decision owner, proposed priority |
-| --- | --- | --- |
-| **S1 · Operations** | A | [Agent](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/agent/agent.py) makes autonomous tool/model decisions; existing operations, NO_TARGET. |
-| **S2 · Coordination** | C | [Swarm](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/multiagent/swarm.py) configurable repeated-handoff regulator supports developer-composable coordination; NO_TARGET. |
-| **S3 · Current management** | — | Runtime limits/background cancellation enforce developer constraints, not independent whole-system manager; DEFER due authority and scope. |
-| **S3* · Independent audit** | — | [GoalLoop](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/vended_plugins/goal/plugin.py) and traces inspect normal results; independent raw-artifact challenge not proven; **P0** opt-in separate audit actor/feedback. |
-| **S4 · Future adaptation** | — | Existing configured provider routing is not forward-looking autonomous environment intelligence; DEFER without a source-specific future scenario. |
-| **S5 · Identity/policy** | — | Application owner decides identity/policy; [harness interventions](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/harness-py/src/strands_harness/interventions.py) enforce constraints; NO_TARGET. |
-
-The system-in-focus is the deployed developer-configured first-party Strands Agent/Swarm/Graph and hooks. Docs, team governance, Evals examples and CI do not become runtime S3*/S5 by repository proximity. No deliberate absence is presumed merely from old `—` grades. Maintainer interest: **NOT_STATED**.
-
-## 2. Specific original-native task and construction
-
-**Operator scenario — HYPOTHETICAL.** A worker completes a Strands Swarm turn and claims it generated a requested artifact, but the artifact is absent or wrong. The caller wants an independent reviewer to inspect original tool outputs/files/replay instead of trusting that worker's final answer. Application remains owner of permission to access evidence and hold subsequent work.
-
-**P0:** The application configures an opt-in read-only autonomous audit actor and independent raw evidence provider; a [MultiAgentPlugin](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/plugins/multiagent_plugin.py) samples `SwarmResult` claims via [Swarm state/hooks](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/multiagent/swarm.py), attaches source/task revisions, returns `PASS/CHALLENGE/INCONCLUSIVE`, and allows the application to hold a later affected node using [BeforeNodeCallEvent](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/hooks/events.py). The owner makes any ultimate approval. A naked extra reviewer node or trace does not qualify as complementary S3*.
-
-**Best existing native alternative:** Use [GoalLoop](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/strands-py/src/strands/vended_plugins/goal/plugin.py) / hooks, traces, an application-managed reviewer and explicit human check; this can be sufficient and is the matched baseline, but is not proof that a separate first-party composable audit channel already closes S3*.
-
-## 3. Existing native overlap and minimum missing link
-
-| S3* C requirement | Track A, shipped/pending | Track B, missing construction |
-| --- | --- | --- |
-| Alternative access to operational reality | Shipped Swarm results/hook events; [PR #1656](https://github.com/strands-agents/harness-sdk/pull/1656) OPEN evaluation telemetry | Independent read-only raw artifact/replay access + distinct autonomous judge/criteria |
-| Versioned finding changes later lawful operation | Shipped `BeforeNodeCallEvent.cancel_node` and snapshots; [PR #6204](https://github.com/strands-agents/harness-sdk/pull/6204) OPEN integration tests | Task/evidence revision binding, attributed finding, authorized hold/recheck and actual return |
-
-[Issue #5934](https://github.com/strands-agents/harness-sdk/issues/5934) concerns deterministic *pre-tool* bounds, a different product problem. No parallel PR was assumed merged. Positive claim is architectural constructibility only; no measured benefit or product priority is asserted.
-
-## 4. Priority, acceptance and limits
-
-**P0:** Source-native S3* independent Swarm artifact-audit plugin, not generic central governance. **P1:** raw evidence ownership/access, stale-ID and snapshot safety, native Python verification, then TypeScript parity. **P2:** NONE.
-
-**Future positive:** against identical input, the worker lies about generated artifact; separate auditor checks actual artifact and lawful next task is held/rechecked, with outcome fed back. **Future negatives:** auditor not installed, missing/revoked evidence access, stale finding, policy-denied action, clean correct artifact, feedback failure. A missing auditor is not interpreted as an automatically passing review. **NOT_RUN**; cost **NOT_MEASURED**. Falsifier: no independent evidence/decision, no downstream authorized effect/feedback, or shipped equivalent autonomous audit control.
-
-## 5. Decision and rights
-
-**GO / NEEDS_EVIDENCE** applies only to a complete proposed `S3*=— -> S3*=C` path, not actual runtime C, implementation approval, or an instruction to maintainers to adopt it. The 2026-11-19 scoped NO_GO remains historically attributable: it demanded empirical incremental utility over native S3 limits; the 2026-11-20 post-neutrality independent pass chooses a different S3* object and does not pretend evidence was tested. Separate Cedar budget case unchanged.
-
-License Apache-2.0. [Contributor procedure](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/CONTRIBUTING.md) and [AI policy](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/team/AI_USAGE_POLICY.md) still apply. Fork owner control `ACTIVE/ALLOW` applies to metadata only. No original or public fork Issue/PR/comment, code, Index change, tests or measured savings published. Next permitted work is a disposable native acceptance experiment, then an independently approved product/publication decision.
+**Decision reason / next permitted step:** A complete source-specific first-party S3* actor, independent evidence, lawful downstream hold and returned feedback is architecturally constructible; no product demand or tests are established. Later isolated native acceptance experiment, then maintainer-owned product choice. Historical 2026-11-19 NO_GO from the *same* case (different broader requirement to prove marginal demand, focus on S3 current limits) remains in Git history, and separate Cedar Wave 4 S3 case remains unchanged. First pass [sealed before historical inspection](https://github.com/opensiro/upstream/issues/58#issuecomment-7045308538).
+**Agent/developer handoff:** [constructor-sufficiency.md](constructor-sufficiency.md) and [roadmap.md](roadmap.md) are the only current technical/structured companions.
+**Rights and publication:** Apache-2.0, [contributors](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/CONTRIBUTING.md) and [AI use policy](https://github.com/strands-agents/harness-sdk/blob/287896945d2190ebf90adc9e67c0456239681843/team/AI_USAGE_POLICY.md) apply. Fork `ACTIVE/ALLOW` is metadata-only, not publication consent. **DRAFT — NOT PUBLISHED**; no original/fork public Issue/PR/comment, product code change, Index regrade or independent task approval.
+**AI disclosure:** Prepared with AI assistance; native acceptance NOT_RUN and independent human review not claimed.
