@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "20261120T165702Z--strands-s3star-wave4-native-rerun",
+  "recorded_at": "2026-11-20T16:57:02Z",
+  "actor": "OpenSiro AI assistant (owner-requested Upstream #58 Strands independent v0.18.1 Wave 4)",
+  "kind": "RESEARCH",
+  "decision": "GO",
+  "evidence_urls": [
+    "https://github.com/strands-agents/harness-sdk/commit/287896945d2190ebf90adc9e67c0456239681843",
+    "https://github.com/opensiro/vsm-harness-index/blob/5dbb51b2ddad0f29a84e10b4b5009c8989159165/assessments/st/strands-agents.md",
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7045308538",
+    "https://github.com/strands-agents/harness-sdk/pull/1656",
+    "https://github.com/strands-agents/harness-sdk/pull/6204"
+  ],
+  "next_action": "Independent source-first S3*=— -> S3*=C opt-in raw-artifact audit proposal GO / NEEDS_EVIDENCE; same stable fork case updated, native tests NOT_RUN, cost NOT_MEASURED, no original/public fork publication or Index regrade. Historical NO_GO remains attributable."
+}
