@@ -1,85 +1,51 @@
-# Strands — snapshot-safe authorization and conditional S3 constructor sufficiency
+# Strands Agents — shared-budget S3 constructor sufficiency (Wave 4)
 
-**Level 2 AI/developer contract · PLAN_ONLY / NO_USEFUL_CHANGE · DRAFT — NOT PUBLISHED.** [Human Issue draft](https://github.com/opensiro-contributions/harness-sdk/blob/opensiro/meta/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/issue.md) · [receipt](https://github.com/opensiro-contributions/harness-sdk/blob/opensiro/meta/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/roadmap.md).
-**Final operator decision: NO_GO** — do not implement a new S3 control agent for the current task.
+**PLAN_ONLY · proposal-stage GO / NEEDS_EVIDENCE · technical contract; NOT_RUN, NOT_MEASURED; DRAFT — NOT PUBLISHED.**
 
-## Functional classification and accepted historical Index
+**Target transition:** S3=— -> S3=C
+**Proposal-stage decision:** GO
+**Research disposition:** NEEDS_EVIDENCE
 
-**Accepted Index:** `S1=A · S2=C · S3=— · S3*=— · S4=— · S5=—`; [pinned assessment](https://github.com/opensiro/vsm-harness-index/blob/34e11ec4dd52e1ba3ee0111d8bca73f13918f54f/assessments/st/strands-agents.md), blob `60b16ac6fdbe828d873706786a79e44053ec7446`, reviewed **2026-09-15** at `08ed4cfd3eb42ae9f668595e675d5f196eee7e44` (Profile 0.2.1 / Skills 0.3.1), last successful source check **2026-09-17** at `e7fd22b63f3988997a12fb962144a9663a27d071`; original [HEAD `078cbc216608eefe37fdb8bc5e43e3a02985e088`](https://github.com/strands-agents/harness-sdk/commit/078cbc216608eefe37fdb8bc5e43e3a02985e088) checked **2026-11-19**. Last successful check age **63 days**: source-pinned Index reassessment recommended but does not block provisional plan-only research. Historical grades are not current HEAD classifications.
+**Canonical decision receipt:** [roadmap.md](roadmap.md).
+**Human Issue (draft only):** [issue.md](issue.md).
+**Frozen historical NO_GO:** [2026-11-19 receipt](https://github.com/opensiro-contributions/harness-sdk/blob/b17a07332bffa1b5eecfc0c24da47c721ec1d3a4/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/roadmap.md). Current [original SHA](https://github.com/strands-agents/harness-sdk/commit/3e5217136b80ddcd743099ad5d11a926301c8c04) and [accepted Index](https://github.com/opensiro/vsm-harness-index/blob/0a4ffd542afae11b048918167f7791f26db167bb/assessments/st/strands-agents.md) are pinned in the receipt.
 
-| VSM function | Observed organizational owner | Inclusion or exclusion |
-| --- | --- | --- |
-| S1=A | Tool-using agent operational work | Already agent-owned; no mandatory C |
-| S2=C | Swarm configurable anti-oscillation / handoff coordination | Already composable; retain |
-| S3=— | No first-party whole-system autonomous owner of capacity/priority decisions in accepted scope; Cedar enforces static supplied limits | **P0 NO_GO**: static limit correctness ≠ new agent-controlled S3 |
-| S3*=— | Graph `review` nodes can be skipped because of a state bug, but no protected complementary independent auditor is verified | Do not infer S3* from node names/interrupts |
-| S4=— | Snapshot restore/handoffs address current execution, not future external adaptation intelligence | No S4 hypothesis |
-| S5=— | Policy/identity supplied by parent/application | Preserve legitimate policy authority |
+## Functional boundary and autonomy test
 
-**System-in-focus:** first-party Python and TypeScript SDK, `Agent`, default delegated subagents, `CedarAuthorization`, Swarm/Graph snapshot/resume. No private app policies, maintainer governance, external deployment or uninstalled actor is inside this boundary. Original [Apache-2.0](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/LICENSE.APACHE), [contribution guidelines](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/CONTRIBUTING.md), [AI policy](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/team/AI_USAGE_POLICY.md). Matched fork `opensiro-contributions/harness-sdk` parent verified; initial control **PAUSE/DORMANT**. No new public communication.
+The in-scope runtime includes Python/TS Strands Agent, Swarm/Graph orchestrators, child agent composition, CedarAuthorization, first-party InterventionHandler and before/after tool events. The budget decision concerns the operating application's shared agent work capacity, not the maintainer's CI, Evals, private provider systems or parent policy administration. Parent decides the total limit and permitted tools; a composed supervised actor may only choose which current S1 receives capacity within that ceiling. It does NOT set its own constitutional policy (not S5) and it is not an independent S3* auditor.
 
-## 1. Actual task / negative construction counterfactual
+**S3 witness:** disturbance = competing agents consuming a shared budget with changing priorities/observed demand. Decision = change how much usable capacity each current S1 can consume, not just compute an already selected rule. Owner = opt-in supervisor agent composed from first-party Strands API by the developer. Enforcer = fail-closed intervention + versioned shared ledger; feedback = usage/denial and observed subsequent allocation effects returned to supervisor for the next choice. Counterfactual owner test: remove supervisor, retain Cedar and ledger: fixed rules still enforce but the *discretionary redistribution* decision disappears. A notification-only hook is insufficient.
 
-**Operator:** application developer defines `call_count < 3` and expects per-agent rate-limiting across subagent handoffs and snapshot restoration, under the explicitly configured policy. Developer needs a predictable answer to **what is counted before and after restore**, not a new AI manager that chooses policy. [#6289](https://github.com/strands-agents/harness-sdk/issues/6289) reproduces stale in-memory count after `agent.load_snapshot` and warns that always trusting restored agent state could allow repeated tool calls beyond the intended limit in Swarm/Graph/asTool.
+## Track A — shipped first-party primitives and original overlap
 
-**Remove a proposed S3 controller:** native policies and cache-reset/restore semantics can still decide permit/deny, so the same useful result remains possible without an autonomous S3 actor. This rejects the constructive owner counterfactual. A runtime rejecting a tool action is not necessarily owner of resource-allocation decisions.
+- [Agent execution](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/agent/agent.py), [Swarm handoffs](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/multiagent/swarm.py#L197-L235) and [Graph](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/multiagent/graph.py) implement operational dispatch with limits. Existing S2=C anti-oscillation is separate.
+- [Python Cedar](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/vended_interventions/cedar/cedar_authorization.py#L160-L285) and [TS Cedar](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-ts/src/vended-interventions/cedar/cedar.ts#L175-L272) enforce static developer-authored policy on each tool call; per-agent cached counts do not constitute a shared autonomous S3 actor.
+- [InterventionHandler](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/interventions/handler.py#L29-L108) and [Before/AfterToolCall events](https://github.com/strands-agents/harness-sdk/blob/3e5217136b80ddcd743099ad5d11a926301c8c04/strands-py/src/strands/hooks/events.py#L221-L285) provide supported native integration surfaces, but any claimed cross-agent global atomic enforcement requires tests.
+- [Original #6289](https://github.com/strands-agents/harness-sdk/issues/6289) OPEN explores inconsistent restored snapshot counts; [#6381](https://github.com/strands-agents/harness-sdk/issues/6381) OPEN for TypeScript reset-all parity. [#6279](https://github.com/strands-agents/harness-sdk/pull/6279) and [#6290](https://github.com/strands-agents/harness-sdk/pull/6290) MERGED; their test assertions do not prove a shared-budget S3 loop.
+- Best simpler alternative for *the reported defect*: repair Cedar counters and write snapshot, child and repeated node tests. Do this independently of any new S3 proposal.
 
-**P0: REJECTED proposed S3=C autonomous budget manager. P1: existing-native #6289 correctness/contract; P2: NONE.**
+## Track B — smallest function-complete opt-in kit
 
-## 2. Current first-party source vs existing PR state
+1. **Observation:** a first-party intervention uses stable agent/work-item IDs and emits tool-call authorization, consumption and denial events to a concurrency-safe shared ledger. Snapshot restores must not reset global spending. Parent's total ceiling cannot be rewritten by the supervisor.
+2. **Decision ownership:** a developer-assembled first-party supervisor Agent observes aggregate ledger and live capacity/priority inputs and exercises bounded discretion choosing among eligible S1 allocations. The decision and its justification/revision have traceable owner; deterministic framework enforcement alone is not the S3 owner.
+3. **Binding closure:** ledger validates revision and atomically reserves action capacity before allowed tool effects, rejecting stale/over-budget actions by default; each managed S1 sees changed capacity at its next tool invocation. Completion/denial modifies the ledger and the supervisor receives later feedback to revise allocations.
+4. **Boundary:** explicit registered managed agents/actions, permitted tool effects, parent-approved budget unit and failure mode. Test child construction and permissions inheritance, Graph/Swarm restart, separate Python/TS paths and potential out-of-band tools. If any managed side effect can bypass reservations, the sufficient C chain is not demonstrated.
+5. **Construction:** optional reusable source-native kit, not an independently deployed policy authority or unreviewable default service. No product implementation in this PR; native APIs, names and tests are hypotheses until validated.
 
-| Evidence element | Main at observed SHA | Competing source state |
-| --- | --- | --- |
-| Python Cedar counter cache | [`WeakKeyDictionary` keyed by Agent, `_counts_for`](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/strands-py/src/strands/vended_interventions/cedar/cedar_authorization.py#L255-L285) loads from `agent.state` only when cache entry absent | [#6278](https://github.com/strands-agents/harness-sdk/issues/6278) CLOSED; [PR #6279](https://github.com/strands-agents/harness-sdk/pull/6279) **MERGED** 2026-11-18 |
-| TypeScript Cedar counterpart | [`WeakMap` and reset](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/strands-ts/src/vended-interventions/cedar/cedar.ts#L220-L265) | [PR #6290](https://github.com/strands-agents/harness-sdk/pull/6290) **MERGED** 2026-11-18 with subagent-path tests |
-| Mid-life snapshot restore | No refresh of a previously cached per-agent count on loading replacement state in inspected Cedar code | [#6289](https://github.com/strands-agents/harness-sdk/issues/6289) **OPEN**, with three explicit options; none adopted by this case |
-| Graph interrupted node recovery | [Graph `_execute_graph`](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/strands-py/src/strands/multiagent/graph.py#L814-L841) clears pending nodes before limit check | [#5341](https://github.com/strands-agents/harness-sdk/issues/5341) **OPEN**; [PR #5342](https://github.com/strands-agents/harness-sdk/pull/5342) and [PR #5496](https://github.com/strands-agents/harness-sdk/pull/5496) **OPEN**, overlap |
-| Peer oscillation | [Swarm `should_continue`](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/strands-py/src/strands/multiagent/swarm.py#L197-L235) supports configurable repetition detection | Matches accepted S2=C; no new S3 assertion |
+| Obligation | A0 existing-native capability | B1 proposed C delta | Falsifier |
+| --- | --- | --- | --- |
+| See current shared resource use | Per-agent Cedar counts in agent state, hooks | Shared append-only usage/reservation ledger | Equivalent native global accounting already exists |
+| Decide aggregate priorities | Static per-agent policies, developer configuration | Composed model-owned selection within parent limits | Static rule produces equivalent discretionary reallocation |
+| Apply decisions to current S1 | BeforeToolCall supports deny | Atomically enforced versioned allowance across all managed paths | Any stale/parallel managed action overspends |
+| Close feedback | Agent observes tool outcomes | Supervisor observes later utilization/denials and changes next allocation | Next S1 choices unaffected or only log-only |
+| Preserve parent rights | Cedar and application policy | Strict immutable parent ceiling, non-escalating grants | Actor can change its own S5 envelope |
 
-**Verified PR heads at observation**: #6279 `7ef22f010d47c8cca83ed15f1da5e7086a2db48c`; #6290 `0cc3343bb11d5d7f604e8e72eea5d997e86db5af`; #5342 `54f0052cda9233bb7cc6a4327980ffa387093aaf`; #5496 `36504caf3ab5acca93ac85e957c5491c0ce9c669`. Distinguish already merged versus open: **do not treat open fixes as shipped**. Test outcomes reported in upstream PR descriptions are source reports, not tests executed by OpenSiro.
+**Rejected variants:** (i) fix-only #6289 cannot itself be the novel cross-agent discretionary S3 decision; (ii) deterministic static per-agent totals alone are not model-owned dynamic regulation; (iii) logging-only/trace-only has no closure; (iv) an independent S3* audit or S4 forecast without its own supported function evidence is outside this scoped case.
 
-## 3. What a genuinely demanded S3=C future constructor would require
+## Planned native evidence, cost and stop conditions
 
-**Not an approved implementation.** If a real operator later needs an agent to choose/revise shared current capacity under a legitimate parent-granted envelope, a future source-native design must include:
-1. **Whole-system disturbance signal**: shared run budget/capacity/priority conflict across multiple supported S1 agents, beyond a single static tool-count threshold.
-2. **Configurable decision owner**: application can independently compose an autonomous S3 actor with narrowly defined selectable options (rebalance budgets, postpone/stop work, preserve a reserve) and auditable inputs; removing the actor removes the discretionary choice while policy enforcement remains.
-3. **Authorized effect**: enforce overall limits and priority decisions at supported Swarm/Graph/subagent execution, not just a local hook; distinguish underlying policy owner from enforcement.
-4. **State/version lifecycle**: counters, snapshot restores, handoffs and decisions cannot reset policy or duplicate effects; stale/unauthorized choices reject fail-closed.
-5. **Returned feedback**: selected allocation changes actual next scheduled tasks/calls and returns receipt/usage into subsequent controller decisions, with a supported install path in both claimed SDK languages.
-6. **Native positive and negative proof**: show materially different operator outcome against smallest static Cedar policy/manual workaround; protect S5 parent control and S2 handoff invariants.
+A0 baseline: fixed Cedar policy with #6289 settled in an original-native fashion; B1: budget supervisor on same competing agent workload. Validate over concurrent calls and restarted/snapshotted child agents: fixed global ceiling never exceeded, discretionary allocation actually changes after feedback, new allocation reaches later S1 execution, parent controls remain immutable, no tool bypass or unintended fail-open, both Python and TS supported. Include negative controls (remove supervisor; remove enforcement; crash ledger; stale revision), measure total test/regression effort, runtime latency/LLM costs, and engineering time. **Tests: NOT_RUN. Economics: NOT_MEASURED.** A failed authority/closure test => NO_GO/BLOCKED as supported; an already equivalent shipped first-party S3 path => no material new C.
 
-**No evidenced first-party developer-composable S3 owner port or concrete external/user counterfactual supports this full set today.** Adding these would invent an SDK product direction. Therefore NO_GO; no qualified P0 constructor or claim of C sufficiency.
+## Neutrality / provenance and next decision
 
-## 4. Priority and native policy decision
-
-**P0:** NO_GO; no new S3. **P1:** allow upstream owners to choose among #6289's reset-then-restore, state-on-every-call or user-restore-only semantics. Treat the issue author's preference as a proposal, not maintainer mandate. Focus on complete per-agent/subagent tool-call accounting, independently test policy leakage across cycles, and fix under original repository rules only if requested. **P2:** NONE. This plan creates no product branch, feature or contribution record.
-
-The Graph review-skip fix is a separate original-owned issue with *two open competing PRs*; choose one through maintainer review. The skipped `review` node is an execution-consistency bug; it does not prove S3* independence or justify another watchdog/agent.
-
-## 5. Optional secondary C path
-
-**NONE**: S3* audit, S4 future adaptation, and S5 policy are not evidenced for a new constructor by these issues. No forced A→C or grade maximization.
-
-## 6. Proposed source-native acceptance matrix (NOT EXECUTED)
-
-| Case | Expected native evidence | Failure / falsification |
-| --- | --- | --- |
-| AC-01 Snapshot restore correctness | On same Agent, after two calls, restore snapshot with one call; expected subsequent permit/deny follows documented semantics, Python and TS | In-memory count silently overrides explicit chosen restore semantics |
-| AC-02 Parent-child isolation | Parent + subagent share handler instance; per-agent counts remain independent as intended by merged #6279 | Child exhausts parent's local limit or state leaks |
-| AC-03 Swarm/Graph continuity | Revisit same logical agent across handoff/reset with identical call-count policy; no unintended budget increase | New fix permits more calls by restarting counts |
-| AC-04 asTool continuity | Repeated child-as-tool calls under selected `preserve_context` policy; correct counting across calls | Each invocation restarts limit unexpectedly |
-| AC-05 Unauthorized or invalid state | Stale snapshot or unauthorized manual mutation cannot silently escalate permitted calls under supported policy; fail closed with clear error/report | Silent success, inconsistent denial, no counter proof |
-| AC-06 Independent Graph issue | Interrupt review node, hit execution cap, retry: review node must run or remain visibly pending; compare original PR #5342 vs #5496 | Graph reports complete with review not run |
-| AC-07 Hypothetical S3 only | Developer supplies distinct legitimate autonomous manager; different lawful allocation changes later run and yields usage feedback; remove manager to test contrast | Same decisions from deterministic gate: not S3=C |
-
-Run only original-native commands from [CONTRIBUTING](https://github.com/strands-agents/harness-sdk/blob/078cbc216608eefe37fdb8bc5e43e3a02985e088/CONTRIBUTING.md) if a separately authorized Upgrade proceeds: Python focused `strands-py` pytest/hatch and TypeScript unit tests; source-pinned baseline vs proposed fix. None were run for this plan-only decision.
-
-## 7. Evidence / cost / stop
-
-**Evidence owner:** original maintainers own #6289's counter contract and reviews of #5342/#5496; application user owns requirements for parent-vs-tree-wide budget and decision delegation; Index/Skills own any formal function reassessment. Current original reviewed at [`078cbc216608eefe37fdb8bc5e43e3a02985e088`](https://github.com/strands-agents/harness-sdk/commit/078cbc216608eefe37fdb8bc5e43e3a02985e088); accepted 2026-09-15 grading + 2026-09-17 supported check are historical. Re-assessment advisory at >30 days; no automatic grade change.
-
-**Cost comparison:** static native Cedar correction versus hypothetical autonomous S3 manager under same policy correctness, task load and safety: count developer engineering hours, tests, integration, human reviews, per-run overhead and maintenance/regression effort. **NOT_MEASURED.**
-
-**Final decision: NO_GO / NO_USEFUL_CHANGE.** Do not implement a new S3 controller, external PR or issue, contributor claim, Index grade, unreviewed AI patch or S3* gate. Already-merged PRs need no duplicate, open competing PRs remain original-owned. This [AI contract](https://github.com/opensiro-contributions/harness-sdk/blob/opensiro/meta/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/constructor-sufficiency.md), [Human](https://github.com/opensiro-contributions/harness-sdk/blob/opensiro/meta/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/issue.md) and [receipt](https://github.com/opensiro-contributions/harness-sdk/blob/opensiro/meta/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/roadmap.md) share the exact accepted vector/P0/P1/P2.
-
-**Publication:** fork GitHub Issues currently disabled; external/public communication needs separate exact approval and, for fork Issue, enablement. **NOT PUBLISHED**.
+Independent first pass sealed [before historical comparison](https://github.com/opensiro/upstream/issues/58#issuecomment-7042836907); old [NO_GO](https://github.com/opensiro-contributions/harness-sdk/blob/b17a07332bffa1b5eecfc0c24da47c721ec1d3a4/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/roadmap.md) was product-task-scoped to fixing Cedar's snapshot counts. Wave 4 changes that veto criterion, **not** whether the bug exists or what maintainers should build. The proposed extra architecture remains HYPOTHETICAL, acceptance evidence absent, external public publication forbidden without exact current-chat consent. If implementers do not want this optional feature, that does not falsify the VSM architectural assessment; only function/authority/effect/feedback evidence does.

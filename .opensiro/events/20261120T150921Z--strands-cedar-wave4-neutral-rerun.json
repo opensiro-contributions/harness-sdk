@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "20261120T150921Z--strands-cedar-wave4-neutral-rerun",
+  "recorded_at": "2026-11-20T15:09:21.550Z",
+  "actor": "OpenSiro AI assistant (user-directed Upstream #58 Wave 4 assessment-neutral rerun)",
+  "kind": "RESEARCH",
+  "decision": "GO",
+  "evidence_urls": [
+    "https://github.com/strands-agents/harness-sdk/commit/3e5217136b80ddcd743099ad5d11a926301c8c04",
+    "https://github.com/opensiro/vsm-harness-index/blob/0a4ffd542afae11b048918167f7791f26db167bb/assessments/st/strands-agents.md",
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7042836907",
+    "https://github.com/opensiro-contributions/harness-sdk/blob/b17a07332bffa1b5eecfc0c24da47c721ec1d3a4/.opensiro/issues/strands-cedar-snapshot-budget-roadmap-20261119/roadmap.md",
+    "https://github.com/strands-agents/harness-sdk/issues/6289",
+    "https://github.com/opensiro/upstream/releases/tag/v0.18.0"
+  ],
+  "next_action": "PLAN_ONLY S3=— -> S3=C architecture GO / research NEEDS_EVIDENCE; accepted historical Index unchanged; source-native A/B acceptance NOT_RUN; no third-party publication, product edits or measured economics."
+}
